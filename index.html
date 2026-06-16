@@ -1,209 +1,105 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>给宝宝的一封信</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #fdf6f6;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .book {
-            width: 100%;
-            max-width: 700px;
-            height: 85vh;
-            max-height: 900px;
-            background: #fffaf5;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            padding: 60px 45px;
-            background: #fffaf5;
-            backface-visibility: hidden;
-            transform-origin: left center;
-            transition: transform 0.8s ease-in-out;
-            overflow-y: auto;
-            line-height: 1.8;
-            font-size: 16px;
-            color: #3d3a3a;
-        }
-        .page p {
-            margin-bottom: 1.2em;
-            text-align: justify;
-        }
-        .page.active {
-            transform: translateX(0);
-            z-index: 2;
-        }
-        .page.flipped {
-            transform: rotateY(-180deg);
-            z-index: 1;
-        }
-        .page.hidden {
-            transform: translateX(100%);
-            z-index: 0;
-        }
-        .nav {
-            position: absolute;
-            bottom: 25px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 30px;
-            z-index: 99;
-        }
-        .nav button {
-            background: rgba(236, 197, 196, 0.5);
-            border: none;
-            padding: 10px 18px;
-            border-radius: 30px;
-            font-size: 14px;
-            color: #775555;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .nav button:hover {
-            background: #ecc5c4;
-        }
-        .title {
-            text-align: center;
-            font-size: 22px;
-            font-weight: 500;
-            margin-bottom: 30px;
-            color: #995c5c;
-        }
-        audio {
-            width: 100%;
-            margin-top: 30px;
-            border-radius: 30px;
-        }
-        .end-tip {
-            text-align: center;
-            margin-top: 20px;
-            color: #b37d7d;
-            font-style: italic;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给宝宝的一封信</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fdf6f6;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Microsoft YaHei",sans-serif;color:#3d3a3a;line-height:1.8}
+.book{max-width:700px;margin:0 auto;height:100vh;overflow:hidden;position:relative;background:#fffaf5}
+.page{position:absolute;width:100%;height:100%;padding:50px 30px;overflow-y:auto;transition:all 0.6s ease;background:#fffaf5}
+.page p{margin-bottom:1.2em}
+.title{text-align:center;font-size:22px;margin-bottom:25px;color:#995c5c}
+.audio-box{margin-top:30px}
+audio{width:100%;border-radius:50px}
+.tip{text-align:center;color:#b37d7d;margin-top:10px}
+.btns{position:fixed;bottom:20px;left:0;right:0;display:flex;justify-content:space-between;padding:0 20px;z-index:10}
+.btns button{background:rgba(236,197,196,0.6);border:none;padding:10px 16px;border-radius:30px;color:#775555;font-size:14px}
+</style>
 </head>
 <body>
-    <div class="book">
-        <!-- 第1页 -->
-        <div class="page active" id="p1">
-            <div class="title">致我最爱的宝宝</div>
-            <p>宝宝，我知道你现在特别失望、特别生气，也彻底不想理我了，所以把我所有联系方式都拉黑了。我翻来覆去想了一整晚所有的事情，没有一点委屈，全部都是我的错。我反省了特别久，想好好跟你道个歉，不是敷衍的套话，是我心里真实的想法。</p>
-            <p>我知道今晚的事根本不是单单因为我先睡觉这件小事。确实是前段时间我就已经惹你很不开心了，那几次我们吵得那么严重，甚至都说了几次分手，我好不容易才把你哄回来。我嘴上说着我知道错了、我会改，心里也清清楚楚记得你受了委屈，可我到头来还是做出了没把你真正放在心上的行为。</p>
-        </div>
+<div class="book">
+  <div class="page" id="p1" style="left:0">
+    <div class="title">致我最爱的宝宝</div>
+    <p>宝宝，我知道你现在特别失望、特别生气，也彻底不想理我了，所以把我所有联系方式都拉黑了。我翻来覆去想了一整晚所有的事情，没有一点委屈，全部都是我的错。我反省了特别久，想好好跟你道个歉，不是敷衍的套话，是我心里真实的想法。</p>
+    <p>我知道今晚的事根本不是单单因为我先睡觉这件小事。确实是前段时间我就已经惹你很不开心了，那几次我们吵得那么严重，甚至都说了几次分手，我好不容易才把你哄回来。我嘴上说着我知道错了、我会改，心里也清清楚楚记得你受了委屈，可我到头来还是做出了没把你真正放在心上的行为。</p>
+  </div>
 
-        <!-- 第2页 -->
-        <div class="page hidden" id="p2">
-            <p>我心里也一直特别清楚，你根本没有真正被我哄好。我清清楚楚知道，你表面上开开心心、和我正常相处，心里始终藏着之前的委屈和不开心，只是在迁就我在给我机会。</p>
-            <p>我一直都懂，也一直想着好好弥补你、好好照顾你的情绪。我想着这周末端午线下陪你好好玩三天，踏踏实实陪着你、哄着你，专门借着假期好好弥补之前所有的过错，让你开心开心，也能真正跟你道个歉并且赔罪。</p>
-            <p>可我做得不好的地方在于，心里明明想着要好好弥补、好好珍惜，真正落到日常行动上的时候，却做得一塌糊涂。</p>
-        </div>
+  <div class="page" id="p2" style="left:100%">
+    <p>我心里也一直特别清楚，你根本没有真正被我哄好。我清清楚楚知道，你表面上开开心心、和我正常相处，心里始终藏着之前的委屈和不开心，只是在迁就我在给我机会。</p>
+    <p>我一直都懂，也一直想着好好弥补你、好好照顾你的情绪。我想着这周末端午线下陪你好好玩三天，踏踏实实陪着你、哄着你，专门借着假期好好弥补之前所有的过错，让你开心开心，也能真正跟你道个歉并且赔罪。</p>
+    <p>可我做得不好的地方在于，心里明明想着要好好弥补、好好珍惜，真正落到日常行动上的时候，却做得一塌糊涂。</p>
+  </div>
 
-        <!-- 第3页 -->
-        <div class="page hidden" id="p3">
-            <p>今天我就是犯了最蠢的错，只感觉到我们俩上了一天班很累、身心疲惫，单纯觉得你也说你准备去睡觉，那我们累了的话就先休息、先睡一觉没什么大不了，想着后面还有时间好好陪你、好好聊天。</p>
-            <p>我完全被自己的惰性和短视困住了，只顾着当下的疲惫，彻底忘了你心里还攒着没解开的心结，忽略了你一直隐忍的难过，嘴上心里都懂你的委屈，行动上却一次次掉链子，这是我最无可救药的地方。</p>
-            <p>我们异地这么多年了，都清楚异地恋有多难。我们隔着距离，不能随时见面、不能随时拥抱，你要的安全感和偏爱，全部都只能靠细节、靠态度、靠互相惦记来维持。你一直很珍惜我们的感情，哪怕受了委屈也愿意原谅我、给我机会，可我却一次次辜负你的包容和温柔。</p>
-        </div>
+  <div class="page" id="p3" style="left:100%">
+    <p>今天我就是犯了最蠢的错，只感觉到我们俩上了一天班很累、身心疲惫，单纯觉得你也说你准备去睡觉，那我们累了的话就先休息、先睡一觉没什么大不了，想着后面还有时间好好陪你、好好聊天。</p>
+    <p>我完全被自己的惰性和短视困住了，只顾着当下的疲惫，彻底忘了你心里还攒着没解开的心结，忽略了你一直隐忍的难过，嘴上心里都懂你的委屈，行动上却一次次掉链子，这是我最无可救药的地方。</p>
+    <p>我们异地这么多年了，都清楚异地恋有多难。我们隔着距离，不能随时见面、不能随时拥抱，你要的安全感和偏爱，全部都只能靠细节、靠态度、靠互相惦记来维持。你一直很珍惜我们的感情，哪怕受了委屈也愿意原谅我、给我机会，可我却一次次辜负你的包容和温柔。</p>
+  </div>
 
-        <!-- 第4页 -->
-        <div class="page hidden" id="p4">
-            <p>今晚我们提前商量好了睡醒起来洗个澡接着好好聊天。一开始情绪都好好的，都理解彼此上班很累、很困，我真的特别珍惜这种时光。我十一点半醒过来洗完澡，第一时间就找你，问你什么时候醒、醒了告诉我，我本来是真的想陪着你，等你起来我们再好好说话。</p>
-            <p>后来等到十二点四十多你醒了，我当时随口说了一句我都快困昏过去了，其实只是想假装抱怨下你怎么醒这么晚，虽然是有点困，但是也只是想着逗逗你，你特别温柔、语气平平的让我先睡，说你洗完澡也去睡觉了。</p>
-            <p>我真的太笨、太情商太低了，当时我真觉得你也是困得很想去睡觉了，那一刻我完全没有读懂你的情绪。我只听了表面的话，就真的以为你也是很累，只想赶紧洗完澡休息。我压根没多想，没意识到你是带着之前积攒的委屈，在默默失望，你是觉得我根本不惦记你、不重视你。</p>
-        </div>
+  <div class="page" id="p4" style="left:100%">
+    <p>今晚我们提前商量好了睡醒起来洗个澡接着好好聊天。一开始情绪都好好的，都理解彼此上班很累、很困，我真的特别珍惜这种时光。我十一点半醒过来洗完澡，第一时间就找你，问你什么时候醒、醒了告诉我，我本来是真的想陪着你，等你起来我们再好好说话。</p>
+    <p>后来等到十二点四十多你醒了，我当时随口说了一句我都快困昏过去了，其实只是想假装抱怨下你怎么醒这么晚，虽然是有点困，但是也只是想着逗逗你，你特别温柔、语气平平的让我先睡，说你洗完澡也去睡觉了。</p>
+    <p>我真的太笨、太情商太低了，当时我真觉得你也是困得很想去睡觉了，那一刻我完全没有读懂你的情绪。我只听了表面的话，就真的以为你也是很累，只想赶紧洗完澡休息。我压根没多想，没意识到你是带着之前积攒的委屈，在默默失望，你是觉得我根本不惦记你、不重视你。</p>
+  </div>
 
-        <!-- 第5页 -->
-        <div class="page hidden" id="p5">
-            <p>我明知道你心里本来就有疙瘩没解开，明知道之前的矛盾你还没真正释怀，在这种关键的时候，我却没有多想一想你的感受。我只顾着自己困，听你说让我睡，我就真的马不停蹄去睡觉了，没有等着你、没有再陪陪你，没有主动再跟你多说几句话安抚你。</p>
-            <p>你生气的点我完全能懂，你不是怪我太累想睡觉，你是心寒了。你觉得之前我做错事惹你难过，轻飘飘翻篇，这次又是这样，你带着满心的情绪等着我、盼着我能陪你会，结果我轻轻松松就选择自己先睡了，好像从来没把你的情绪、你的期待放在第一位。在你眼里，就是我做错了事就当没发生，习惯性敷衍、习惯性忽略你的感受，根本没把你的委屈当回事。</p>
-            <p>我真的特别愧疚，也特别后悔。宝宝，对不起。真的对不起。</p>
-        </div>
+  <div class="page" id="p5" style="left:100%">
+    <p>我明知道你心里本来就有疙瘩没解开，明知道之前的矛盾你还没真正释怀，在这种关键的时候，我却没有多想一想你的感受。我只顾着自己困，听你说让我睡，我就真的马不停蹄去睡觉了，没有等着你、没有再陪陪你，没有主动再跟你多说几句话安抚你。</p>
+    <p>你生气的点我完全能懂，你不是怪我太累想睡觉，你是心寒了。你觉得之前我做错事惹你难过，轻飘飘翻篇，这次又是这样，你带着满心的情绪等着我、盼着我能陪你会，结果我轻轻松松就选择自己先睡了，好像从来没把你的情绪、你的期待放在第一位。在你眼里，就是我做错了事就当没发生，习惯性敷衍、习惯性忽略你的感受，根本没把你的委屈当回事。</p>
+    <p>我真的特别愧疚，也特别后悔。宝宝，对不起。真的对不起。</p>
+  </div>
 
-        <!-- 第6页 -->
-        <div class="page hidden" id="p6">
-            <p>我承认我真的很迟钝，尤其在感情细节里，我总后知后觉。我嘴上说着爱你、珍惜你、重视我们的感情，可行动上总是跟不上我的心意。我心里明明超级害怕失去你，可我一次次用我的粗心、我的低情商、我的不作为，让你失望，让你独自消化所有的委屈和难过。</p>
-            <p>异地最伤人的就是这种细节的忽略，你本来就隔着屏幕没有安全感，需要我用无数个细节去弥补、去偏爱、去坚定你对我的信心。可我反倒一次次消耗你的期待，让你觉得自己的情绪不重要，觉得我的爱很敷衍，觉得你一直在单方面包容我。换做是我，我也会超级失望，也会不想理人，也会想彻底躲开。</p>
-            <p>我不想找任何借口，累、困、没多想，全部都是我不负责任的表现。本质就是我不够细心，没有时刻把你的情绪放在优先级第一位，没有真正做到事事顾及你、事事偏爱你。</p>
-        </div>
+  <div class="page" id="p6" style="left:100%">
+    <p>我承认我真的很迟钝，尤其在感情细节里，我总后知后觉。我嘴上说着爱你、珍惜你、重视我们的感情，可行动上总是跟不上我的心意。我心里明明超级害怕失去你，可我一次次用我的粗心、我的低情商、我的不作为，让你失望，让你独自消化所有的委屈和难过。</p>
+    <p>异地最伤人的就是这种细节的忽略，你本来就隔着屏幕没有安全感，需要我用无数个细节去弥补、去偏爱、去坚定你对我的信心。可我反倒一次次消耗你的期待，让你觉得自己的情绪不重要，觉得我的爱很敷衍，觉得你一直在单方面包容我。换做是我，我也会超级失望，也会不想理人，也会想彻底躲开。</p>
+    <p>我不想找任何借口，累、困、没多想，全部都是我不负责任的表现。本质就是我不够细心，没有时刻把你的情绪放在优先级第一位，没有真正做到事事顾及你、事事偏爱你。</p>
+  </div>
 
-        <!-- 第7页 -->
-        <div class="page hidden" id="p7">
-            <p>经过今晚这件事，我彻底反省清楚了。以前我总是觉得大问题不犯就好，小细节无所谓，但我现在真的懂了，感情里最磨人的就是一次次小的失望叠加。你攒了那么久的委屈，从上次吵架到现在，一直压在心里，没有真正被我治愈，今晚看似这么小一件事，只是压垮你的最后一根稻草。</p>
-            <p>我真的不想失去你，我们异地这么久了真的不容易，熬过了那么多见不到面的日子，坚持到现在马上就要看到曙光了，我从来没有想过要放开你的手。我真的很爱你，不是嘴上说说的那种，是真心想和你一直走下去，想结束异地，想以后每天都能陪着你、好好照顾你。</p>
-            <p>以后我绝对不会再这样了。我会改掉我迟钝、粗心的毛病，再也不会后知后觉让你受委屈。不管多晚、不管多累，我一定优先顾及你的情绪，读懂你的口是心非，读懂你藏在平静语气里的失望。再也不会你一句让我睡，我就自顾自去休息，忽略你的所有期待。</p>
-        </div>
+  <div class="page" id="p7" style="left:100%">
+    <p>经过今晚这件事，我彻底反省清楚了。以前我总是觉得大问题不犯就好，小细节无所谓，但我现在真的懂了，感情里最磨人的就是一次次小的失望叠加。你攒了那么久的委屈，从上次吵架到现在，一直压在心里，没有真正被我治愈，今晚看似这么小一件事，只是压垮你的最后一根稻草。</p>
+    <p>我真的不想失去你，我们异地这么久了真的不容易，熬过了那么多见不到面的日子，坚持到现在马上就要看到曙光了，我从来没有想过要放开你的手。我真的很爱你，不是嘴上说说的那种，是真心想和你一直走下去，想结束异地，想以后每天都能陪着你、好好照顾你。</p>
+    <p>以后我绝对不会再这样了。我会改掉我迟钝、粗心的毛病，再也不会后知后觉让你受委屈。不管多晚、不管多累，我一定优先顾及你的情绪，读懂你的口是心非，读懂你藏在平静语气里的失望。再也不会你一句让我睡，我就自顾自去休息，忽略你的所有期待。</p>
+  </div>
 
-        <!-- 最后一页 + 语音 -->
-        <div class="page hidden" id="p8">
-            <p>以前的错我全部认，所有让你难过、委屈的瞬间，都是我的问题。我不会再敷衍翻篇，我会一点点弥补，用以后的所有细节好好疼你、哄你、偏爱你。</p>
-            <p>我知道你现在真的很失望，不想见我、不想理我，我完全理解，也愿意接受你所有的情绪。我不催你原谅我，也不逼你立刻消气。</p>
-            <p>我只是想认认真真跟你说一句，宝宝我错了，让你受委屈了，让你独自难过这么久，真的对不起。</p>
-            <p>我会一直等你，等你愿意理我、愿意再给我一次弥补的机会。我一定会改掉所有坏毛病，好好珍惜你、好好爱你，再也不让你因为我掉眼泪、攒委屈了。</p>
+  <div class="page" id="p8" style="left:100%">
+    <p>以前的错我全部认，所有让你难过、委屈的瞬间，都是我的问题。我不会再敷衍翻篇，我会一点点弥补，用以后的所有细节好好疼你、哄你、偏爱你。</p>
+    <p>我知道你现在真的很失望，不想见我、不想理我，我完全理解，也愿意接受你所有的情绪。我不催你原谅我，也不逼你立刻消气。</p>
+    <p>我只是想认认真真跟你说一句，宝宝我错了，让你受委屈了，让你独自难过这么久，真的对不起。</p>
+    <p>我会一直等你，等你愿意理我、愿意再给我一次弥补的机会。我一定会改掉所有坏毛病，好好珍惜你、好好爱你，再也不让你因为我掉眼泪、攒委屈了。</p>
 
-            <div class="end-tip">❤️ 听听我想对你说的话 ❤️</div>
-            <!-- 语音播放：把 src 换成你的音频链接即可 -->
-            <audio controls>
-                <source src="1.mp3" type="audio/mpeg">
-                你的浏览器不支持音频播放
-            
-        </div>
-
-        <div class="nav">
-            <button id="prev">上一页</button>
-            <button id="next">下一页</button>
-        </div>
+    <div class="audio-box">
+      <p class="tip">❤️ 听听我想对你说的话 ❤️</p>
+      <audio controls playsinline>
+        <source src="voice.mp3" type="audio/mpeg">
+        <source src="voice.m4a" type="audio/mp4">
+        <source src="voice.wav" type="audio/wav">
+        你的浏览器不支持播放
+      
     </div>
+  </div>
 
-    <script>
-        const pages = document.querySelectorAll('.page');
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
-        let current = 0;
+  <div class="btns">
+    <button id="prev">上一页</button>
+    <button id="next">下一页</button>
+  </div>
+</div>
 
-        function showPage(index) {
-            pages.forEach((p, i) => {
-                p.className = 'page hidden';
-                if (i === index) {
-                    p.className = 'page active';
-                } else if (i < index) {
-                    p.className = 'page flipped';
-                }
-            });
-        }
+<script>
+let cur = 0
+const pages = document.querySelectorAll('.page')
+const $next = document.getElementById('next')
+const $prev = document.getElementById('prev')
 
-        next.addEventListener('click', () => {
-            if (current < pages.length - 1) {
-                current++;
-                showPage(current);
-            }
-        });
+function go(n){
+  cur = Math.max(0, Math.min(pages.length-1, n))
+  pages.forEach((p,i)=>{
+    p.style.left = i === cur ? '0' : '100%'
+  })
+}
 
-        prev.addEventListener('click', () => {
-            if (current > 0) {
-                current--;
-                showPage(current);
-            }
-        });
-    </script>
+$next.onclick = ()=>go(cur+1)
+$prev.onclick = ()=>go(cur-1)
+</script>
 </body>
 </html>
